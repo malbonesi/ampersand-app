@@ -1,0 +1,11 @@
+# git directory
+.git
+
+# node modules directory
+node_modules
+
+# debug log
+npm-debug.log
+
+# Cloud9
+.c9
