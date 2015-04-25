@@ -1,6 +1,0 @@
-{
-    isDev: true,
-    db: {
-        url: 'mongodb://localhost/superfrets'
-    }
-}
