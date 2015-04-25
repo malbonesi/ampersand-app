@@ -6,7 +6,7 @@ module.exports = Model.extend({
         this.fetch();
     },
     props: {
-        _id: 'string', //id is a string, because it's going to be some crazy mongo hash
+        _id: 'string',
         username: 'string',
         email: 'string',
         password: 'string'
