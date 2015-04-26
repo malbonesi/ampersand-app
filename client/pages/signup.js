@@ -3,7 +3,6 @@ var templates = require('../templates');
 //var SignupForm = require('../forms/signup');
 var FormView = require('ampersand-form-view');
 var InputView = require('ampersand-input-view');
-var User = require('../models/user');
 var xhr = require('xhr');
 
 module.exports = View.extend({
@@ -78,7 +77,7 @@ module.exports = View.extend({
                         /*
                         xhr({
                             //body: someJSONString,
-                            uri: "/exists/malbonesi",
+                            uri: "/exists/" + data.username,
                             headers: {
                                 "Content-Type": "application/json"
                             }
@@ -88,17 +87,11 @@ module.exports = View.extend({
                             console.log('body: ' + body);
                         });*/
                         //console.log(data);
-                        //Why not set it to app.me right away?
-                        //Becuase if it fails, you would probabaly want to remove that ref
-                        //So just set it on success, once you know it's valid
-                        //But then you have two references to me...
-                        //Just set app.me here
                         var self = this;
-                        app.me = new User(data);
-                        app.me.save([],{
+                        app.me.save({ username: data.username, password: data.password, email: data.email },{
                             wait: true,
                             success: function(model, res){
-                                app.me.id = res._id;
+                                app.me._id = res._id;
                                 app.me.unset('password', {silent: true});
                                 app.navigate('');
                             },

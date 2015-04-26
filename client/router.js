@@ -24,6 +24,7 @@ module.exports = Router.extend({
     logout: function(){
         xhr({uri: "/logout"},
         function(err, res){
+            app.me.clear();
             app.navigate('');
         });
     },
